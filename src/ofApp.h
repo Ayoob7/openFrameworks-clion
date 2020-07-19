@@ -6,7 +6,8 @@
 class ofApp : public ofBaseApp{
 
 	public:
-		void setup();
+		// Static Methods
+        void setup();
 		void update();
 		void draw();
 
@@ -22,8 +23,16 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
+		// Instance variables
         ofSpherePrimitive sphere;
-        ofLight light;
-        ofTexture mTex;
-        ofEasyCam cam;
+
+
+        //current state of the rotation
+        glm::quat curRot;
+
+        //a place to store the mouse position so we can measure incremental change
+        glm::vec2 lastMouse;
+
+        //slows down the rotation 1 = 1 degree per pixel
+        float dampen;
 };
