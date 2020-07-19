@@ -25,7 +25,6 @@ class ofApp : public ofBaseApp{
 
 		// Instance variables
         ofSpherePrimitive sphere;
-        ofTexture mTex;
 
 
         //current state of the rotation

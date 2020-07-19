@@ -5,9 +5,9 @@ void ofApp::setup() {
     ofDisableAlphaBlending();
     ofEnableDepthTest();
     ofBackground(0,0,0);
-    ofSetCircleResolution(500);
+    ofSetCircleResolution(100);
     ofDisableArbTex();
-    ofLoadImage(mTex,"earth.jpg");
+    ofNoFill();
 
 
     //this slows down the rotate a little bit
@@ -23,19 +23,15 @@ void ofApp::update(){
 void ofApp::draw(){
     ofPushMatrix();
     //translate the view to center
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, 40);
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2, 100);
 
     auto axis = glm::axis(curRot);
     //apply the quaternion's rotation to the viewport and draw the sphere
     ofRotateDeg(ofRadToDeg(glm::angle(curRot)), axis.x, axis.y, axis.z);
     /// You can actually use the folling line instead, just showing this other option as example
-    ///	ofRotateRad(glm::angle(curRot), axis.x, axis.y, axis.z);
 
-    mTex.bind();
-    sphere.setRadius(200);
-    sphere.draw();
-    mTex.unbind();
-
+    ofDrawSphere(200);
+    ofDrawSphere(100,100,0,100);
 
     ofPopMatrix();
 }
@@ -64,7 +60,6 @@ void ofApp::mouseDragged(int x, int y, int button){
     glm::quat xRot = glm::angleAxis(ofDegToRad(y-lastMouse.y)*dampen, glm::vec3(-1,0,0));
     curRot = xRot * yRot * curRot;
     lastMouse = mouse;
-
 }
 
 //--------------------------------------------------------------
