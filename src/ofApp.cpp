@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
+    ofDisableAlphaBlending();
+    ofEnableDepthTest();
     ofBackground(0,0,0);
     ofSetCircleResolution(500);
     ofDisableArbTex();
