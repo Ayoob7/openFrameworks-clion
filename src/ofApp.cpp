@@ -1,4 +1,6 @@
 #include "ofApp.h"
+#include <math.h>
+#define PI 3.14159265
 
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -30,8 +32,41 @@ void ofApp::draw(){
     ofRotateDeg(ofRadToDeg(glm::angle(curRot)), axis.x, axis.y, axis.z);
     /// You can actually use the folling line instead, just showing this other option as example
 
-    ofDrawSphere(200);
-    ofDrawSphere(100,100,0,100);
+    int spacing_of_sphere = 50;
+    int radius_hex = 30;
+    int radius_pent = 20;
+    int radius_hex_ud = 10;
+
+    //ofDrawSphere(200);
+
+    //Main Hexagon
+    ofDrawSphere((spacing_of_sphere/2)*sqrt(3), (spacing_of_sphere/2), 0, radius_hex);
+    ofDrawSphere(-(spacing_of_sphere/2)*sqrt(3), (spacing_of_sphere/2), 0, radius_hex);
+    ofDrawSphere((spacing_of_sphere/2)*sqrt(3), -(spacing_of_sphere/2), 0, radius_hex);
+    ofDrawSphere(-(spacing_of_sphere/2)*sqrt(3), -(spacing_of_sphere/2), 0, radius_hex);
+    ofDrawSphere(0, spacing_of_sphere, 0, radius_hex);
+    ofDrawSphere(0, -spacing_of_sphere, 0, radius_hex);
+
+    //Side Pentagon
+    ofDrawSphere((spacing_of_sphere/2)*sqrt(3)+(spacing_of_sphere*cos(18*PI/180)), ((spacing_of_sphere/2)+(spacing_of_sphere*sin(18*PI/180))), 0, radius_pent);
+    ofDrawSphere((spacing_of_sphere/2)*sqrt(3)+(spacing_of_sphere*cos(18*PI/180)), -((spacing_of_sphere/2)+(spacing_of_sphere*sin(18*PI/180))), 0, radius_pent);
+    ofDrawSphere(((spacing_of_sphere/2)*sqrt(3)+(spacing_of_sphere*cos(18*PI/180))-(spacing_of_sphere*sin(54))), ((spacing_of_sphere/2)+(spacing_of_sphere*sin(18*PI/180))+(spacing_of_sphere*cos(54))), 0, radius_pent);
+
+    //Hexagon up and down
+    ofDrawSphere(0, spacing_of_sphere+30, 0, radius_hex_ud);
+    ofDrawSphere(0, -spacing_of_sphere-30, 0, radius_hex_ud);
+
+    //Pentagon side H atom
+    ofDrawSphere(((spacing_of_sphere/2)*sqrt(3)+(spacing_of_sphere*cos(18*PI/180))-(spacing_of_sphere*sin(54)) + 30), ((spacing_of_sphere/2)+(spacing_of_sphere*sin(18*PI/180))+(spacing_of_sphere*cos(54))), 0, radius_hex_ud);
+
+    //Hexagon side up
+    ofDrawSphere(-((spacing_of_sphere/2)*sqrt(3)+(35*cos(45*PI/180))), ((spacing_of_sphere/2)+(35*sin(45*PI/180))), 0, radius_hex);
+    ofDrawSphere(-((spacing_of_sphere/2)*sqrt(3)+(35*cos(45*PI/180))), -((spacing_of_sphere/2)+(35*sin(45*PI/180))), 0, radius_hex);
+
+    //Pentagon slanted
+    ofDrawSphere((spacing_of_sphere/2)*sqrt(3)+(spacing_of_sphere*cos(18*PI/180))+(35*cos(45*PI/180)), ((spacing_of_sphere/2)+(spacing_of_sphere*sin(18*PI/180))+(35*sin(45*PI/180))), 0, radius_pent);
+
+
 
     ofPopMatrix();
 }
