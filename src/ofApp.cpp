@@ -37,8 +37,6 @@ void ofApp::draw(){
     int radius_pent = 20;
     int radius_hex_ud = 10;
 
-    //ofDrawSphere(200);
-
     //Main Hexagon
     ofDrawSphere((spacing_of_sphere/2)*sqrt(3), (spacing_of_sphere/2), 0, radius_hex);
     ofDrawSphere(-(spacing_of_sphere/2)*sqrt(3), (spacing_of_sphere/2), 0, radius_hex);
@@ -65,7 +63,6 @@ void ofApp::draw(){
 
     //Pentagon slanted
     ofDrawSphere((spacing_of_sphere/2)*sqrt(3)+(spacing_of_sphere*cos(18*PI/180))+(35*cos(45*PI/180)), ((spacing_of_sphere/2)+(spacing_of_sphere*sin(18*PI/180))+(35*sin(45*PI/180))), 0, radius_pent);
-
 
 
     ofPopMatrix();
